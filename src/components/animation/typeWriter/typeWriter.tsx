@@ -58,7 +58,7 @@ export const TypeWriter = ({
         };
       }
     }
-  }, [children, text, animate, index, waiting, delay]);
+  }, [children, text, animate, index, waiting, delay, typeSpeed]);
 
   return (
     <TextComponent type={type} algin={algin}>
