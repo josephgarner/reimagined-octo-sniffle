@@ -1,0 +1,8 @@
+.linkIcon {
+  opacity: 0.6;
+  transition-duration: 800ms;
+}
+
+.linkIcon:hover {
+  opacity: 1;
+}

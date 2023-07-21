@@ -1,0 +1,18 @@
+.appContainer_parent {
+  display: grid;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.appContainer_nav {
+  grid-row: row1-start / span 1;
+  grid-column: col2-main / span 1;
+}
+
+.appContainer_child {
+  grid-row: row2-main / span 1;
+  grid-column: col2-main / span 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
