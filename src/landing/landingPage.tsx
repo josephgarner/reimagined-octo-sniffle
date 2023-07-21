@@ -1,5 +1,5 @@
 import { TypeWriter } from "../components/animation";
-import { Container, InnerContainer, Text, Title } from "../components/ui";
+import { Container, InnerContainer, Title } from "../components/ui";
 
 export function LandingPage() {
   return (
