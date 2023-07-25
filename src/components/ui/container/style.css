@@ -5,6 +5,8 @@
 
 .container_child {
   grid-row: row2-start / row3-start;
+  display: flex;
+  flex-direction: column;
 }
 
 .container_child_xs_right {

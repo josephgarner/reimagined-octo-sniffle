@@ -5,5 +5,6 @@ import { InnerContainer } from "./container/innerContainer";
 import { Title } from "./title/title";
 import { Text } from "./text/text";
 import { LinkIcon } from "./linkIcon/linkIcon";
+import { Button } from "./button/button";
 
-export { AppContainer, ThemeContext, useThemeContext, Container, InnerContainer, Title, Text, LinkIcon };
+export { AppContainer, ThemeContext, useThemeContext, Container, InnerContainer, Title, Text, LinkIcon, Button };
