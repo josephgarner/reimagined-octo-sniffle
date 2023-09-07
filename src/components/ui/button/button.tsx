@@ -4,12 +4,13 @@ import "./style.css";
 
 type Props = {
   children?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   color?: "color" | "black";
   variant?: "filled" | "outline";
   size?: "xs" | "sm" | "md" | "lg" | "xl";
 };
 
-export const Button = ({ children, color = "black", variant = "filled", size = "md" }: Props) => {
+export const Button = ({ children, onClick, color = "black", variant = "filled", size = "md" }: Props) => {
   const theme = useThemeContext();
 
   const className = color === "color" ? "button_color" : "button_black";
@@ -46,6 +47,7 @@ export const Button = ({ children, color = "black", variant = "filled", size = "
 
   return (
     <button
+      onClick={onClick}
       className={`button ${className}`}
       style={{ ...style, ...sharredStyle }}
       onMouseEnter={() => setStyle(hoverStyle)}

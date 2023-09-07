@@ -1,0 +1,41 @@
+.viewing_area {
+  height: 300px;
+  width: 400px;
+  border: 3px;
+  border-style: solid;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  border-style: dashed;
+  align-items: center;
+  justify-content: center;
+}
+
+.display_cabinet {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.display_cabinet > div {
+  margin: 5px;
+}
+
+.project_card {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: scale 0.5s;
+  user-select: none;
+}
+
+.project_card:hover {
+  cursor: pointer;
+}
+
+.project_card_clicked {
+  opacity: 0.9;
+  scale: 95%;
+}

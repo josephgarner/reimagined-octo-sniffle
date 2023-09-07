@@ -1,11 +1,11 @@
 export const theme = {
   color: {
-    primary: "#7FB800",
-    secondary: "#00A6ED",
-    tertiary: "#F6511D",
-    quaternary: "#FFD447",
+    primary: "#C82337",
+    secondary: "#E06236",
+    tertiary: "#D7AB61",
+    quaternary: "#2F4C79",
     black: "#313638",
-    white: "#FBFBFF",
+    white: "#F1F2F7",
   },
   spacing: {
     xxs: 4,
@@ -27,3 +27,12 @@ export const theme = {
     h7: 8,
   },
 };
+
+/**
+ primary: "#7FB800",
+    secondary: "#00A6ED",
+    tertiary: "#F6511D",
+    quaternary: "#FFD447",
+    black: "#313638",
+    white: "#FBFBFF",
+ */
