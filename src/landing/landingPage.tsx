@@ -33,9 +33,11 @@ export function LandingPage() {
         </Container>
         <Container>
           <InnerContainer size="xs" position="center">
-            <Button size="sm" onClick={navigateToProjects}>
-              View Projects
-            </Button>
+            <FadeIn delay={6500}>
+              <Button size="sm" onClick={navigateToProjects}>
+                View Projects
+              </Button>
+            </FadeIn>
           </InnerContainer>
         </Container>
       </FlexContainer>

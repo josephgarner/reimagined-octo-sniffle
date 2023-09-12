@@ -1,50 +1,47 @@
 import { useState } from "react";
 import { FadeIn } from "../components/animation";
-import { FlexContainer, Title, useThemeContext } from "../components/ui";
-import "./style/style.css";
-import { ViewingArea } from "./components/viewingArea";
 import { DisplayCabinet } from "./components/displayCabinet";
-import { Project } from "../types";
+import { Project, ProjectTags } from "../types";
 import { CategoryBanner } from "./components/categoryBanner";
+import { FlexContainer } from "../components/ui";
 
 export const ExhibitPage = () => {
-  const theme = useThemeContext();
   const [navigating] = useState(false);
 
   const projects: Project[] = [
     {
-      title: "Test project",
-      tag: "IOT",
-      color: theme.color?.primary,
+      title: "FORMULA SCHEDULE",
+      tags: [ProjectTags.FRONTEND, ProjectTags.IOT],
       location: "",
     },
     {
-      title: "Test project 2",
-      tag: "Web Dev",
-      color: theme.color?.secondary,
+      title: "REA SCRAPER",
+      tags: [ProjectTags.FRONTEND, ProjectTags.BACKEND],
       location: "",
     },
     {
-      title: "Test project 3",
-      tag: "Backend",
-      color: theme.color?.tertiary,
+      title: "LAKSHMI",
+      tags: [ProjectTags.FRONTEND, ProjectTags.BACKEND],
+      location: "",
+    },
+    {
+      title: "POTTR SYSTEM",
+      tags: [ProjectTags.FRONTEND, ProjectTags.BACKEND, ProjectTags.IOT],
+      location: "",
+    },
+    {
+      title: "PORTFOLIO",
+      tags: [ProjectTags.FRONTEND, ProjectTags.BACKEND, ProjectTags.CLOUD],
       location: "",
     },
   ];
 
-  const selectedProject: Project | null = null;
-
   return (
     <FadeIn inverse={navigating}>
-      <CategoryBanner />
-      <ViewingArea />
-      {/* <FlexContainer vAlign="start">
-        <Title type="h2">Projects</Title>
-        <FlexContainer vAlign="start">
-          <DisplayCabinet projects={projects} />
-          
-        </FlexContainer>
-      </FlexContainer> */}
+      <FlexContainer vAlign="start">
+        <CategoryBanner />
+        <DisplayCabinet projects={projects} />
+      </FlexContainer>
     </FadeIn>
   );
 };

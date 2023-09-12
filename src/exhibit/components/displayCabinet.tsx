@@ -1,5 +1,6 @@
 import { Project } from "../../types";
-import { ProjectCard } from "./projectCardNew";
+import { ProjectFolder } from "./projectFolder";
+import "../style/displayCabinetStyle.css";
 
 type Props = {
   projects: Project[];
@@ -7,9 +8,10 @@ type Props = {
 
 export const DisplayCabinet = ({ projects }: Props) => {
   const renderCards = () => {
-    return projects.map((e: Project, index: number) => {
-      return <ProjectCard title={e.title} tag={e.tag} color={e.color} initalPos={{ x: 0, y: 0 }} />;
+    return projects.map((e: Project) => {
+      return <ProjectFolder title={e.title} tags={e.tags} />;
     });
   };
+
   return <div className="display_cabinet">{renderCards()}</div>;
 };
