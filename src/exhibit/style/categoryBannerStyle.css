@@ -12,7 +12,7 @@
   width: 50px;
   display: flex;
   justify-content: center;
-  transition-timing-function: ease;
+  transition-timing-function: ease-out;
   cursor: pointer;
 }
 

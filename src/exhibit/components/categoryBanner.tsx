@@ -11,6 +11,11 @@ export const CategoryBanner = () => {
     setLoad(true);
   }, 1000);
 
+  const handleMouseEnter = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    console.log(event);
+  };
+
   const sharedStyle: React.CSSProperties = {};
 
   const textStyle: React.CSSProperties = {
@@ -19,7 +24,7 @@ export const CategoryBanner = () => {
     textOrientation: "upright",
     width: "fit-content",
     height: "100%",
-    position: "relative",
+    position: "fixed",
     fontWeight: 600,
   };
 
@@ -50,7 +55,7 @@ export const CategoryBanner = () => {
 
   return (
     <div className="category_banner_container">
-      <div style={backendStyle} className="category_banner_filter">
+      <div style={backendStyle} onMouseEnter={handleMouseEnter} className="category_banner_filter">
         <FadeIn delay={2500}>
           <Text algin="center" style={textStyle}>
             BACKEND

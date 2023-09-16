@@ -11,7 +11,7 @@ export const ExhibitPage = () => {
   const projects: Project[] = [
     {
       title: "FORMULA SCHEDULE",
-      tags: [ProjectTags.FRONTEND, ProjectTags.IOT],
+      tags: [ProjectTags.IOT],
       location: "",
     },
     {

@@ -23,13 +23,37 @@ export const ProjectFolder = ({ title, tags }: Props) => {
     return tags.map((tag) => {
       switch (ProjectTags[tag]) {
         case "BACKEND":
-          return <div className="categoryBanner backendCat" style={{ backgroundColor: theme.color?.primary }} />;
+          return (
+            <div
+              key={ProjectTags[tag]}
+              className="categoryBanner backendCat"
+              style={{ backgroundColor: theme.color?.primary }}
+            />
+          );
         case "FRONTEND":
-          return <div className="categoryBanner backendCat" style={{ backgroundColor: theme.color?.secondary }} />;
+          return (
+            <div
+              key={ProjectTags[tag]}
+              className="categoryBanner backendCat"
+              style={{ backgroundColor: theme.color?.secondary }}
+            />
+          );
         case "IOT":
-          return <div className="categoryBanner backendCat" style={{ backgroundColor: theme.color?.tertiary }} />;
+          return (
+            <div
+              key={ProjectTags[tag]}
+              className="categoryBanner backendCat"
+              style={{ backgroundColor: theme.color?.tertiary }}
+            />
+          );
         case "CLOUD":
-          return <div className="categoryBanner backendCat" style={{ backgroundColor: theme.color?.quaternary }} />;
+          return (
+            <div
+              key={ProjectTags[tag]}
+              className="categoryBanner backendCat"
+              style={{ backgroundColor: theme.color?.quaternary }}
+            />
+          );
         default:
           return null;
       }

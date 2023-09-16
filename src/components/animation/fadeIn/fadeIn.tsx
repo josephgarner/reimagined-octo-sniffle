@@ -6,9 +6,10 @@ type Props = {
   duration?: number;
   delay?: number;
   inverse?: boolean;
+  container?: boolean;
 };
 
-export const FadeIn = ({ children, duration = 1, delay = 500, inverse = false }: Props) => {
+export const FadeIn = ({ children, duration = 1, delay = 500, inverse = false, container = true }: Props) => {
   const [style, setStyle] = useState<React.CSSProperties>({
     opacity: inverse ? 1 : 0,
     pointerEvents: "none",
@@ -27,7 +28,7 @@ export const FadeIn = ({ children, duration = 1, delay = 500, inverse = false }:
   }, [inverse, delay, duration]);
 
   return (
-    <div style={style} className="fadeIn_Container">
+    <div style={style} className={container ? "fadeIn_Container" : ""}>
       {children}
     </div>
   );
