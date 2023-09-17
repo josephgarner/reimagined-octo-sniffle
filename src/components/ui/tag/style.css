@@ -1,0 +1,6 @@
+.messageTag {
+  font-weight: 600;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+}

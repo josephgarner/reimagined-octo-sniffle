@@ -3,7 +3,7 @@ import { useThemeContext } from "../context/themeContext";
 import "./style.css";
 
 type Props = {
-  children: JSX.Element | JSX.Element[] | string | (JSX.Element | string)[];
+  children?: JSX.Element | JSX.Element[] | string | (JSX.Element | string)[];
   type?: HeadingType;
   style?: React.CSSProperties;
   algin?: Position;

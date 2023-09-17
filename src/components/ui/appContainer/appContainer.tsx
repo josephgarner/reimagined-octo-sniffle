@@ -22,6 +22,7 @@ export const AppContainer = ({ children, nav = null }: Props) => {
 
   return (
     <div className="appContainer_parent" style={sharedStyle}>
+      {/* <AnimdatedBackground /> */}
       <div className="appContainer_nav">{nav}</div>
       <div className="appContainer_child">{children}</div>
     </div>

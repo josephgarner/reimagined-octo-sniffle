@@ -1,6 +1,6 @@
 .container_parent {
-  height: inherit;
   display: grid;
+  width: 100%;
 }
 
 .container_child {

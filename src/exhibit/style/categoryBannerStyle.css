@@ -1,0 +1,21 @@
+.category_banner_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+  top: 0;
+  left: 70px;
+  position: absolute;
+}
+
+.category_banner_filter {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  transition-timing-function: ease-out;
+  cursor: pointer;
+}
+
+.category_banner_filter:hover {
+  width: 70px;
+}

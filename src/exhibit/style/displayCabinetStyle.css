@@ -1,0 +1,4 @@
+.display_cabinet {
+  display: flex;
+  flex-wrap: wrap;
+}

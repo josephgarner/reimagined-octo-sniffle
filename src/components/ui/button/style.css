@@ -2,20 +2,8 @@
   all: unset;
   display: block;
   cursor: pointer;
-  align-self: center;
-  border-radius: 25px;
   font-weight: bolder;
-}
-.button_black {
+  display: flex;
+  align-items: center;
   transition-duration: 800ms;
-}
-
-.button_color {
-  animation: colorSpin 10s linear infinite;
-}
-
-@keyframes colorSpin {
-  to {
-    background-position: 70vw;
-  }
 }

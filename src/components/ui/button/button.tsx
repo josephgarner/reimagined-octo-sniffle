@@ -1,40 +1,60 @@
 import { useState } from "react";
 import { useThemeContext } from "../context/themeContext";
 import "./style.css";
+import { IconType } from "react-icons";
 
 type Props = {
   children?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   color?: "color" | "black";
-  variant?: "filled" | "outline";
+  variant?: "filled" | "outline" | "ghost";
   size?: "xs" | "sm" | "md" | "lg" | "xl";
+  vAlign?: "start" | "center" | "end";
+  leftIcon?: IconType;
 };
 
-export const Button = ({ children, color = "black", variant = "filled", size = "md" }: Props) => {
+export const Button = ({
+  children,
+  onClick,
+  color = "black",
+  variant = "filled",
+  size = "md",
+  vAlign = "center",
+  leftIcon,
+}: Props) => {
   const theme = useThemeContext();
 
-  const className = color === "color" ? "button_color" : "button_black";
+  const sharredStyle: React.CSSProperties =
+    variant === "ghost"
+      ? {
+          borderColor: "none",
+          color: theme.color?.black,
+          padding: theme.spacing![size],
+        }
+      : {
+          borderWidth: "2px",
+          borderStyle: "solid",
+          padding: theme.spacing![size],
+          alignSelf: vAlign,
+          borderRadius: "25px",
+        };
 
-  const sharredStyle: React.CSSProperties = {
-    borderWidth: "2px",
-    borderStyle: "solid",
-    padding: theme.spacing![size],
-  };
-
-  const unhoverStyle: React.CSSProperties = {
-    borderColor: theme.color?.black,
-    backgroundColor: theme.color?.white,
-    backgroundPosition: "0px 0px",
-    color: theme.color?.black,
-  };
+  const unhoverStyle: React.CSSProperties =
+    variant === "ghost"
+      ? {
+          opacity: "0.6",
+        }
+      : {
+          borderColor: theme.color?.black,
+          backgroundColor: theme.color?.white,
+          backgroundPosition: "0px 0px",
+          color: theme.color?.black,
+        };
 
   const hoverStyle: React.CSSProperties =
-    color === "color"
+    variant === "ghost"
       ? {
-          backgroundImage: `repeating-linear-gradient(90deg,
-					${theme.color?.primary} 0% 25%,
-					${theme.color?.secondary} 25% 50%,
-					${theme.color?.tertiary} 50% 75%, 
-					${theme.color?.quaternary} 75% 100%)`,
+          opacity: "1",
         }
       : {
           borderColor: theme.color?.black,
@@ -42,15 +62,51 @@ export const Button = ({ children, color = "black", variant = "filled", size = "
           color: theme.color?.white,
         };
 
-  const [style, setStyle] = useState<React.CSSProperties>(unhoverStyle);
+  const [hover, setHover] = useState(false);
+
+  const handleOnMouseEnter = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    setHover(true);
+  };
+
+  const handleOnMouseLeave = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    setHover(false);
+  };
+
+  const leftIconDisplay = () => {
+    if (leftIcon === undefined) return null;
+    const Icon = leftIcon;
+    let iconSize = theme.fontSize?.h3;
+
+    switch (size) {
+      case "sm":
+        iconSize = theme.fontSize?.h4;
+        break;
+      case "md":
+        iconSize = theme.fontSize?.h3;
+        break;
+      case "lg":
+        iconSize = theme.fontSize?.h2;
+        break;
+      default:
+        iconSize = theme.fontSize?.h3;
+    }
+
+    return <Icon size={iconSize} />;
+  };
+
+  const buttonStyle = hover === true ? hoverStyle : unhoverStyle;
 
   return (
     <button
-      className={`button ${className}`}
-      style={{ ...style, ...sharredStyle }}
-      onMouseEnter={() => setStyle(hoverStyle)}
-      onMouseLeave={() => setStyle(unhoverStyle)}
+      onClick={onClick}
+      className={`button`}
+      style={{ ...buttonStyle, ...sharredStyle }}
+      onMouseEnter={handleOnMouseEnter}
+      onMouseLeave={handleOnMouseLeave}
     >
+      {leftIconDisplay()}
       {children}
     </button>
   );
