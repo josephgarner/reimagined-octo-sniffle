@@ -1,5 +1,4 @@
 .display_cabinet {
-  margin-left: 300px;
   display: flex;
   flex-wrap: wrap;
 }

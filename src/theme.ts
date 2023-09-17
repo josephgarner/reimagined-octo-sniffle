@@ -6,6 +6,7 @@ export const theme = {
     quaternary: "#2F4C79",
     black: "#313638",
     white: "#F1F2F7",
+    grey: "#7a7a7a",
   },
   spacing: {
     xxs: 4,

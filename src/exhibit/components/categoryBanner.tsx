@@ -1,19 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FadeIn } from "../../components/animation";
 import { Text, useThemeContext } from "../../components/ui";
 import "../style/categoryBannerStyle.css";
+import { useLoader } from "./pageLoaderState";
 
 export const CategoryBanner = () => {
   const theme = useThemeContext();
   const [load, setLoad] = useState(false);
+  const { unloading } = useLoader();
+  const textFadeInDelay = 2500;
 
-  setTimeout(() => {
-    setLoad(true);
-  }, 1000);
+  useEffect(() => {
+    if (!unloading) {
+      setTimeout(() => {
+        setLoad(true);
+      }, 1000);
+    } else {
+      setLoad(!unloading);
+    }
+  }, [unloading]);
 
   const handleMouseEnter = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
-    console.log(event);
+    // console.log(event);
   };
 
   const sharedStyle: React.CSSProperties = {};
@@ -56,28 +65,28 @@ export const CategoryBanner = () => {
   return (
     <div className="category_banner_container">
       <div style={backendStyle} onMouseEnter={handleMouseEnter} className="category_banner_filter">
-        <FadeIn delay={2500}>
+        <FadeIn delay={unloading ? 0 : textFadeInDelay} inverse={unloading}>
           <Text algin="center" style={textStyle}>
             BACKEND
           </Text>
         </FadeIn>
       </div>
       <div style={frontendStyle} className="category_banner_filter">
-        <FadeIn delay={2500}>
+        <FadeIn delay={unloading ? 0 : textFadeInDelay} inverse={unloading}>
           <Text algin="center" style={textStyle}>
             FRONTEND
           </Text>
         </FadeIn>
       </div>
       <div style={iotStyle} className="category_banner_filter">
-        <FadeIn delay={2500}>
+        <FadeIn delay={unloading ? 0 : textFadeInDelay} inverse={unloading}>
           <Text algin="center" style={textStyle}>
             IOT
           </Text>
         </FadeIn>
       </div>
       <div style={designStyle} className="category_banner_filter">
-        <FadeIn delay={2500}>
+        <FadeIn delay={unloading ? 0 : textFadeInDelay} inverse={unloading}>
           <Text algin="center" style={textStyle}>
             CLOUD
           </Text>

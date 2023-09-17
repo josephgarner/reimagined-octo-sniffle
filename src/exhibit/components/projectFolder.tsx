@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+import { useNavigate } from "react-router-dom";
 import { Title, useThemeContext } from "../../components/ui";
 import { ProjectTags } from "../../types";
 import "../style/projectFolderStyle.css";
@@ -5,11 +7,14 @@ import "../style/projectFolderStyle.css";
 type Props = {
   title?: string;
   tags: ProjectTags[];
-  color?: string;
+  location?: string;
+  onSelect?: Dispatch<SetStateAction<boolean>>;
+  navigateDelay?: number;
 };
 
-export const ProjectFolder = ({ title, tags }: Props) => {
+export const ProjectFolder = ({ title, tags, location = "", onSelect, navigateDelay = 1500 }: Props) => {
   const theme = useThemeContext();
+  const navigate = useNavigate();
 
   const titleStyle: React.CSSProperties = {
     gridColumnStart: 2,
@@ -17,6 +22,19 @@ export const ProjectFolder = ({ title, tags }: Props) => {
     gridRowStart: 1,
     gridRowEnd: 1,
     fontSize: theme.fontSize?.h3,
+  };
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    if (onSelect === undefined) {
+      navigate(`${location}`);
+      return;
+    }
+    onSelect(true);
+    setTimeout(() => {
+      navigate(`${location}`);
+      onSelect(false);
+    }, navigateDelay);
   };
 
   const categories = () => {
@@ -61,7 +79,7 @@ export const ProjectFolder = ({ title, tags }: Props) => {
   };
 
   return (
-    <div className="backFolder">
+    <div className="backFolder" onClick={handleClick}>
       <div className="frontFolder">
         <Title algin="left" style={titleStyle}>
           {title}

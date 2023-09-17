@@ -11,6 +11,7 @@ type Colors = {
   quaternary?: string;
   black?: string;
   white?: string;
+  grey?: string;
 };
 
 type Spacing = {

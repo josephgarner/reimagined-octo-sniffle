@@ -1,46 +1,22 @@
 import { useState } from "react";
 import { FadeIn } from "../components/animation";
-import { DisplayCabinet } from "./components/displayCabinet";
-import { Project, ProjectTags } from "../types";
 import { CategoryBanner } from "./components/categoryBanner";
 import { FlexContainer } from "../components/ui";
+import { Outlet } from "react-router-dom";
+import { PageLoaderContext } from "./components/pageLoaderState";
 
 export const ExhibitPage = () => {
-  const [navigating] = useState(false);
-
-  const projects: Project[] = [
-    {
-      title: "FORMULA SCHEDULE",
-      tags: [ProjectTags.IOT],
-      location: "",
-    },
-    {
-      title: "REA SCRAPER",
-      tags: [ProjectTags.FRONTEND, ProjectTags.BACKEND],
-      location: "",
-    },
-    {
-      title: "LAKSHMI",
-      tags: [ProjectTags.FRONTEND, ProjectTags.BACKEND],
-      location: "",
-    },
-    {
-      title: "POTTR SYSTEM",
-      tags: [ProjectTags.FRONTEND, ProjectTags.BACKEND, ProjectTags.IOT],
-      location: "",
-    },
-    {
-      title: "PORTFOLIO",
-      tags: [ProjectTags.FRONTEND, ProjectTags.BACKEND, ProjectTags.CLOUD],
-      location: "",
-    },
-  ];
-
+  const [unloading, setUnloading] = useState(false);
+  console.log(unloading);
   return (
-    <FadeIn inverse={navigating}>
+    <FadeIn>
       <FlexContainer vAlign="start">
-        <CategoryBanner />
-        <DisplayCabinet projects={projects} />
+        <PageLoaderContext value={{ unloading, setUnloading }}>
+          <CategoryBanner />
+          <div style={{ marginLeft: "300px" }}>
+            <Outlet />
+          </div>
+        </PageLoaderContext>
       </FlexContainer>
     </FadeIn>
   );

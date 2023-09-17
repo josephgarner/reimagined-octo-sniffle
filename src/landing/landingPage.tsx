@@ -7,7 +7,8 @@ export function LandingPage() {
   const [navigating, setNavigating] = useState(false);
   const navigate = useNavigate();
 
-  const navigateToProjects = () => {
+  const navigateToProjects = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
     setNavigating(true);
     setTimeout(() => {
       navigate("projects");

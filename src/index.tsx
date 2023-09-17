@@ -2,26 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { LandingPage } from "./landing";
+import { RouterProvider } from "react-router-dom";
 import { theme } from "./theme";
 import { ThemeContext } from "./components/ui/context/themeContext";
 import { AppContainer } from "./components/ui";
 import { Navigation } from "./components/nav/navigation";
-import { ExhibitPage } from "./exhibit";
-
+import { router } from "./router";
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <LandingPage />,
-  },
-  {
-    path: "/projects",
-    element: <ExhibitPage />,
-  },
-]);
 
 root.render(
   <React.StrictMode>
